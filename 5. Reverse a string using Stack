@@ -1,0 +1,37 @@
+
+You are given a string S, the task is to reverse the string using stack.
+
+ 
+
+Example 1:
+
+
+Input: S="GeeksforGeeks"
+Output: skeeGrofskeeG
+
+
+
+
+
+
+//return the address of the string
+char* reverse(char *S, int len)
+{
+    //code here
+    stack<char> st;
+    int i=0;
+    while(len>0)
+    {
+        st.push(S[i]);
+        i++;
+        len--;
+    }
+    i=0;
+    while(!st.empty())
+    {
+        S[i]= st.top();
+        i++;
+        st.pop();
+    }
+return S;
+}
