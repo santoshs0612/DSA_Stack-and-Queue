@@ -1,0 +1,54 @@
+You are given a stack St. You have to reverse the stack using recursion.
+
+Example 1:
+
+Input:
+St = {3,2,1,7,6}
+Output:
+{6,7,1,2,3}
+Example 2:
+
+Input:
+St = {4,3,9,6}
+Output:
+{6,9,3,4}
+
+
+//User function Template for C++
+
+class Solution{
+public:
+    void insertBottom(stack<int> &s,int x)
+    {
+        if(s.empty())
+        {
+            s.push(x);
+            return;
+        }
+        else 
+        {
+            int a= s.top();
+            s.pop();
+            insertBottom(s,x);
+            s.push(a);
+        }
+    }
+    void Reverse(stack<int> &St){
+        if(St.size()==1)
+        {
+            return;
+        }
+        if(St.empty())
+        {
+            return;
+        }
+        else {
+            int temp = St.top();
+            St.pop();
+            Reverse(St);
+            insertBottom(St,temp);
+            return;
+        }
+        
+    }
+};
