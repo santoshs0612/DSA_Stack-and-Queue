@@ -1,0 +1,29 @@
+
+Given a stack S and an integer N, the task is to insert N at the bottom of the stack.
+
+
+
+#include <bits/stdc++.h> 
+
+void solverPushatBottom(stack<int>& s, int x)
+{
+    if(s.empty())
+    {
+        s.push(x);
+        return;
+    }
+    else 
+    {
+        int a= s.top();
+        s.pop();
+        solverPushatBottom(s,x);
+        s.push(a);
+    }
+}
+stack<int> pushAtBottom(stack<int>& myStack, int x) 
+{
+    // Write your code here.
+    
+    solverPushatBottom(myStack,x);
+    return myStack;
+}
