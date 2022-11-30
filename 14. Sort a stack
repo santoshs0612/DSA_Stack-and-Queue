@@ -1,0 +1,54 @@
+Given a stack, the task is to sort it such that the top of the stack has the greatest element.
+
+Example 1:
+
+Input:
+Stack: 3 2 1
+Output: 3 2 1
+Example 2:
+
+Input:
+Stack: 11 2 32 3 41
+Output: 41 32 11 3 2
+
+
+
+
+/*The structure of the class is
+class SortedStack{
+public:
+	stack<int> s;
+	void sort();
+};
+*/
+
+/* The below method sorts the stack s 
+you are required to complete the below method */
+void insertSort(stack<int> &s,int val)
+{
+    if(s.size()==0 || s.top()<= val)
+    {
+        s.push(val);
+        return;
+    }
+    int temp = s.top();
+    s.pop();
+    insertSort(s,val);
+    s.push(temp);
+}
+void  sortStack(stack<int> &s)
+{
+    if(s.size()==1)
+    {
+        return;
+    }
+    int temp = s.top();
+    s.pop();
+    sortStack(s);
+    insertSort(s,temp);
+}
+void SortedStack :: sort()
+{
+   //Your code here
+   sortStack(s);
+}
