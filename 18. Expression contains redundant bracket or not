@@ -1,0 +1,56 @@
+Given a string of balanced expression, find if it contains a redundant parenthesis or not. A set of parenthesis are redundant if the same sub-expression is surrounded by unnecessary or multiple brackets. Print Yes if redundant, else No.
+Note: Expression may contain + , - , *, and / operators. Given expression is valid and there are no white spaces present.
+
+Example 1:
+
+Input:
+exp = ((a+b))
+Output:
+Yes
+Explanation:
+((a+b)) can reduced to (a+b).
+Example 2:
+
+Input:
+exp = (a+b+(c+d))
+Output:
+No
+Explanation:
+(a+b+(c+d)) doesn't have any redundant or multiple
+brackets.
+
+
+class Solution {
+  public:
+    int checkRedundancy(string S) {
+        // code here
+        
+        stack<char> s;
+        for(int i=0 ;i<S.length();i++)
+        {
+            if(S[i]==')')
+            {
+                bool opflag= true;
+                while(!s.empty() && s.top()!='(')
+                {
+                    char c= s.top();
+                    if(c=='*' || c=='/'
+                    || c=='+' || c=='-')
+                        {
+                            opflag=false;
+                        }
+                        s.pop();
+                }
+                if(opflag==true)
+                {
+                    return 1;
+                }
+                s.pop();
+            }
+            else {
+                s.push(S[i]);
+            }
+        }
+        return 0;
+    }
+};
